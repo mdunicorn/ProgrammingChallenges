@@ -64,8 +64,8 @@ int main()
 		{
 			std::string &line = board[i];
 			for (int j = 0; j < line.size(); j++)
-                if (line[j] == '*')
-                    incAdjacents(board, i, j);
+				if (line[j] == '*')
+					incAdjacents(board, i, j);
 		}
 
 		if (fieldNumber > 1)
