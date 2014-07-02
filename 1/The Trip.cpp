@@ -1,6 +1,11 @@
 #include <iostream>
 #include <iomanip>
 
+int max(int a, int b)
+{
+	return (a > b) ? a : b;
+}
+
 int main()
 {
 	int n;
@@ -15,15 +20,21 @@ int main()
 			amounts[i] = d * 100;
 			sum += amounts[i];
 		}
-		double average = (double)sum / n;
-		long iAverage = (int)average;
-		if (iAverage < average)
-			iAverage++;
-		int minExchange = 0;
+		int average = sum / n;
+		int rem = sum % n;
+		long avgMin = average;
+		long avgMax = average;
+		if (rem > 0)
+			avgMax++;
+		int exchangeBelow = 0, exchangeAbove = 0;
 		for (int i = 0; i < n; i++)
-			if (amounts[i] > iAverage)
-				minExchange += amounts[i] - iAverage;
-		std::cout << "$" << std::setiosflags(std::ios::fixed) << std::setprecision(2) << minExchange / 100.0 << std::endl;
+			if (amounts[i] >= avgMax)
+				exchangeAbove += amounts[i] - avgMax;
+			else if (amounts[i] <= avgMin)
+				exchangeBelow += avgMin - amounts[i];
+		int exchange = max(exchangeBelow, exchangeAbove);
+		std::cout << "$" << std::setiosflags(std::ios::fixed) << std::setprecision(2) << exchange / 100.0 << std::endl;
+		delete[] amounts;
 	}
 
 	return 0;
