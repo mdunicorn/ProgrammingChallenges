@@ -12,12 +12,14 @@ int main()
 	while ((std::cin >> n) && n > 0)
 	{
 		long *amounts = new long[n];
-		double d;
 		long sum = 0;
+		int dollars, cents;
 		for (int i = 0; i < n; i++)
 		{
-			std::cin >> d;
-			amounts[i] = d * 100;
+			std::cin >> dollars;
+			std::cin.ignore();
+			std::cin >> cents;
+			amounts[i] = dollars * 100 + cents;
 			sum += amounts[i];
 		}
 		int average = sum / n;
