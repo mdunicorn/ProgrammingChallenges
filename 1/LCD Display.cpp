@@ -26,12 +26,8 @@ void bar(int count = 1)
 int main()
 {
 	int s, n;
-	int tc = 0;
 	while ((std::cin >> s >> n) && s > 0)
 	{
-		if (++tc > 1)
-			std::cout << std::endl;
-
 		std::vector<int> digits;
 		if (n == 0)
 		{
@@ -236,6 +232,7 @@ int main()
 			}
 			std::cout << std::endl;
 		}
+		std::cout << std::endl;
 	}
 	return 0;
 }
