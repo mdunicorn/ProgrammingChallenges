@@ -33,11 +33,19 @@ int main()
 			std::cout << std::endl;
 
 		std::vector<int> digits;
-		while (n > 0)
+		if (n == 0)
 		{
-			digits.push_back(n % 10);
-			n /= 10;
+			digits.push_back(0);
 		}
+		else
+		{
+			while (n > 0)
+			{
+				digits.push_back(n % 10);
+				n /= 10;
+			}
+		}
+
 		int rows = 2 * s + 3;
 		int midRow = s + 1;
 		int lastRow = rows - 1;
