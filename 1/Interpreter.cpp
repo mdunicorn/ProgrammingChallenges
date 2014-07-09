@@ -1,5 +1,9 @@
 #include <iostream>
 
+using std::cin;
+using std::cout;
+using std::endl;
+
 int registers[10];
 int ram[1000];
 int ip = 0;
@@ -53,15 +57,15 @@ bool runNextInstruction()
 int main()
 {
 	int testcases;
-	std::cin >> testcases;
-	std::cin.ignore();
+	cin >> testcases;
+	cin.ignore();
 	char line[10];
-	std::cin.getline(line, 9); // skip the blank line
+	cin.getline(line, 9); // skip the blank line
 
 	for (int testcase = 0; testcase < testcases; testcase++)
 	{
 		int addr = 0;
-		while ((std::cin.getline(line, 9)) && line[0] != '\0')
+		while ((cin.getline(line, 9)) && line[0] != '\0')
 		{
 			ram[addr++] = (line[0] - '0') * 100 + (line[1] - '0') * 10 + (line[2] - '0');
 		}
@@ -74,7 +78,7 @@ int main()
 		while (runNextInstruction())
 			numInstructions++;
 
-		std::cout << numInstructions << std::endl;
+		cout << numInstructions << endl;
 	}
 	return 0;
 }
