@@ -65,7 +65,7 @@ int main()
 	for (int testcase = 0; testcase < testcases; testcase++)
 	{
 		int addr = 0;
-		while ((cin.getline(line, 9)) && line[0] != '\0')
+		while (addr < 1000 && (cin.getline(line, 9)) && line[0] != '\0')
 		{
 			ram[addr++] = (line[0] - '0') * 100 + (line[1] - '0') * 10 + (line[2] - '0');
 		}
@@ -73,11 +73,16 @@ int main()
 		while (addr < 1000)
 			ram[addr++] = 0;
 
+		for (int i = 0; i < 10; i++)
+			registers[i] = 0;
+
 		ip = 0;
 		int numInstructions = 1;
 		while (runNextInstruction())
 			numInstructions++;
 
+		if (testcase > 0)
+			cout << endl;
 		cout << numInstructions << endl;
 	}
 	return 0;
